@@ -1,0 +1,26 @@
+def search(low:int , high:int , target: int , arr: list[int]) -> int:
+
+    while(low <= high):
+        mid = (low+high)//2
+
+        if arr[mid] == target:
+            return mid
+        
+        if arr[low] > arr[mid]: 
+            if arr[mid] <= target and target <= arr[high]:
+                low = mid+1
+            else:
+                high = mid-1
+        
+        else:
+            if arr[low] <= target and target <= arr[mid]:
+                high = mid-1
+            else:
+                low = mid + 1
+
+
+    return -1
+
+arr = [5,6,7,8,1,2,3,4]
+ans = search(0, len(arr)-1, 7, arr)
+print(ans)

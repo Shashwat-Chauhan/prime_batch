@@ -1,0 +1,142 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 60px auto;
+    grid-template-columns: 200px 1fr;
+    background-color: #181818;
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #202020;
+    grid-column: 1 / 3;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: red;
+    font-weight: bold;
+}
+
+.logo i {
+    margin-right: 10px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #303030;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+
+.header-icons i {
+    font-size: 1.2rem;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* Sidebar */
+aside {
+    background-color: #202020;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+nav ul li i {
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+nav ul li:hover {
+    background-color: #303030;
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Video Card */
+.card {
+    background-color: #282828;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+}
+
+.video-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.video-info i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.video-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.video-info p {
+    font-size: 0.85rem;
+    color: #aaa;
+}

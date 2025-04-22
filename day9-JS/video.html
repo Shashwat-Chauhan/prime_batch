@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Player</title>
+    <link rel="stylesheet" href="video.css">
+</head>
+
+<body>
+
+    <!-- Video Player Section -->
+    <div class="video-container">
+        <iframe width="900" height="506" src="" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-container">
+        <h2>Comments</h2>
+        <div class="comment-input">
+            <textarea id="comment-text" placeholder="Add a comment..."></textarea>
+            <button id="post-comment">Post</button>
+        </div>
+        <ul id="comment-list"></ul>
+    </div>
+
+    <script>
+        // Load Video in Iframe
+        const iframe = document.querySelector('iframe');
+        const [_, videoId] = window.location.search.split('=');
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    
+        // Store in Local Storage (History)
+        const youtubeHistory = localStorage.getItem('yt_history');
+        let newHistory = youtubeHistory ? JSON.parse(youtubeHistory) : [];
+        
+        if (!newHistory.includes(videoId)) {
+            newHistory.push(videoId);
+            localStorage.setItem('yt_history', JSON.stringify(newHistory));
+        }
+
+        // Handle Comments
+        const commentInput = document.getElementById('comment-text');
+        const postCommentBtn = document.getElementById('post-comment');
+        const commentList = document.getElementById('comment-list');
+
+        // Load comments from localStorage
+        const loadComments = () => {
+            const comments = JSON.parse(localStorage.getItem(`comments_${videoId}`)) || [];
+            commentList.innerHTML = "";
+            comments.forEach(comment => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="user-icon">👤</span> <p>${comment}</p>`;
+                commentList.appendChild(li);
+            });
+        };
+
+        // Post new comment
+        postCommentBtn.addEventListener('click', () => {
+            const commentText = commentInput.value.trim();
+            if (commentText === "") return;
+
+            let comments = JSON.parse(localStorage.getItem(`comments_${videoId}`)) || [];
+            comments.push(commentText);
+            localStorage.setItem(`comments_${videoId}`, JSON.stringify(comments));
+
+            commentInput.value = "";
+            loadComments();
+        });
+
+        // Load comments on page load
+        loadComments();
+    </script>
+
+</body>
+</html>
