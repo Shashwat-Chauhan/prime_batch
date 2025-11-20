@@ -1,2 +1,2 @@
-const express = require(express)
-cost
+const fs = require('fs').promises;
+console.log(fs.promises)
