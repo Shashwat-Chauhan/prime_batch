@@ -18,11 +18,8 @@ def max_depth(node):
     if not node:
         return 0
     
-    maxi = 0
-
     left_sum = max_depth(node.left)
     right_sum = max_depth(node.right)
-    maxi = max(maxi , left_sum , right_sum)
 
     return 1 + max(left_sum , right_sum)
 
