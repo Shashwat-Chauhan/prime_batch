@@ -1,15 +1,3 @@
-def dfs(adj_list, node, visited=None):
-    if visited is None:
-        visited = set()
-    
-    visited.add(node)
-    print(node, end=' ')  # Visit the node
-
-    for neighbor in adj_list[node]:
-        if neighbor not in visited:
-            dfs(adj_list, neighbor, visited)
-
-# Example usage
 adj_list = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
@@ -19,8 +7,19 @@ adj_list = {
     'F': []
 }
 
+
+def dfs(node , graph , visited):
+    print(node , end= ' ')
+    visited.add(node)
+
+    for neighbour in graph[node]:
+        if neighbour not in visited:
+            dfs(neighbour , graph , visited)
+
+
+visited = set()
 print("DFS Traversal:")
-dfs(adj_list, 'A')
+dfs('A', adj_list, visited)
 
 
 

@@ -19,5 +19,6 @@ def frog_jump(idx):
     return dp[idx]
 
 print(frog_jump(5))
+print(dp)
 
 # This solution is Top-Down / memoization , now try doing bottom up dp , ie tabulation 

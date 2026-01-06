@@ -31,7 +31,6 @@ def boundary_traversal(root):
         dfs(root)
         return nodes
 
-
     
     def left_boundary(root):
         nodes = []
