@@ -41,7 +41,7 @@ class Solution:
                 if visited_matrix[i][j] == 0 and grid[i][j] == "1":
                     count += 1
                     bfs(i , j , visited_matrix , grid)
-z   
+
 
         return count
 

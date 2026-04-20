@@ -14,14 +14,16 @@ root.right.left = Node(6)
 root.right.right = Node(7)
 root.left.left.left = Node(9)
 
-def max_depth(node):
-    if not node:
+
+
+def max_depth(root):
+    if not root:
         return 0
     
-    left_sum = max_depth(node.left)
-    right_sum = max_depth(node.right)
+    left_depth = max_depth(root.left)
+    right_depth = max_depth(root.right)
 
-    return 1 + max(left_sum , right_sum)
+    return 1 + max(left_depth , right_depth)
 
 max_depth_of_tree = max_depth(root)
 print(max_depth_of_tree)
